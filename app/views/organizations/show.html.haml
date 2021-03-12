@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Organization type:
+  = @organization.organization_type_id
+%p
+  %b Name:
+  = @organization.name
+%p
+  %b Description:
+  = @organization.description
+%p
+  %b External identifier:
+  = @organization.external_identifier
+
+= link_to 'Edit', edit_organization_path(@organization)
+\|
+= link_to 'Back', organizations_path

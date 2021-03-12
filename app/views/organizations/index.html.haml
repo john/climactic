@@ -1,0 +1,24 @@
+%h1
+  Organizations
+  = link_to 'New Organization', new_organization_path, type: 'button', class: 'btn btn-outline-secondary btn-sm'
+
+%table
+  %thead
+    %tr
+      // %th Organization type
+      %th 
+      // %th Description
+      // %th External identifier
+      %th
+
+  %tbody
+    - @organizations.each do |organization|
+      %tr
+        // %td= organization.organization_type_id
+        %td= link_to organization.name, organization
+        %td= organization.description
+        // %td= organization.external_identifier
+        %td
+          = link_to 'Edit', edit_organization_path(organization)
+          |
+          = link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' }
