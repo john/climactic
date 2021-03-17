@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  resources :facility_types
+  resources :organization_address_types
+  resources :addresses
   resources :industry_sectors
   root 'home#index'
   

@@ -1,7 +1,6 @@
-%h1 Editing organization
+.mb-3
+  = link_to 'Organizations', organizations_path
+  
+%h1 Editing #{link_to @organization.name, @organization}
 
 = render 'form'
-
-= link_to 'Show', @organization
-\|
-= link_to 'Back', organizations_path

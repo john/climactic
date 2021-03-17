@@ -13,10 +13,15 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new
   def new
     @organization = Organization.new
+    
+    # TODO: these sure won't scale
+    @industry_sectors = IndustrySector.all
+    @addresses = Address.all
   end
 
   # GET /organizations/1/edit
   def edit
+    @industry_sectors = IndustrySector.all
   end
 
   # POST /organizations or /organizations.json
@@ -25,7 +30,20 @@ class OrganizationsController < ApplicationController
 
     respond_to do |format|
       if @organization.save
-        format.html { redirect_to @organization, notice: "Organization was successfully created." }
+         if @organization.industry_sector.present?
+          @organization.industry_sectors << IndustrySector.find(@organization.industry_sector)
+          @organization.save
+        end
+        
+        if @organization.address.present?
+          logger.debug "-----------> found addredd!"
+          @organization.addresses << Address.find(@organization.address)
+          @organization.save
+        else
+          logger.debug "-----------> no address :-("
+        end
+        
+        format.html { redirect_to organizations_path, notice: "Organization was successfully created." }
         format.json { render :show, status: :created, location: @organization }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -64,6 +82,6 @@ class OrganizationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def organization_params
-      params.require(:organization).permit(:organization_type_id, :name, :description, :external_identifier)
+      params.require(:organization).permit(:organization_type_id, :name, :description, :external_identifier, :industry_sector, :address)
     end
 end

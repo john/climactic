@@ -1,0 +1,26 @@
+= form_for @address do |f|
+  - if @address.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@address.errors.count, "error")} prohibited this address from being saved:"
+      %ul
+        - @address.errors.full_messages.each do |message|
+          %li= message
+
+
+  .mb-3
+    = f.label :organization, class: "form-label"
+    = f.select(:organizations, options_from_collection_for_select(@organizations, "id", "name"), {include_blank: true}, {class: "form-control"})
+  .mb-3
+    = f.label :contact_id, class: "form-label"
+    = f.number_field :contact_id, class: "form-control"
+  .mb-3
+    = f.label :address_line_1, class: "form-label"
+    = f.text_field :address_line_1, class: "form-control"
+  .mb-3
+    = f.label :address_line_2, class: "form-label"
+    = f.text_field :address_line_2, class: "form-control"
+  .mb-3
+    = f.label :postal_code, class: "form-label"
+    = f.text_field :postal_code, class: "form-control"
+  .mb-3
+    = f.submit 'Save', class: "btn btn-primary"

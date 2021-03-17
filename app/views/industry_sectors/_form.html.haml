@@ -6,11 +6,11 @@
         - @industry_sector.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :code
-    = f.text_field :code
-  .field
-    = f.label :name
-    = f.text_field :name
-  .actions
-    = f.submit 'Save'
+  .mb-3
+    = f.label :code, class: "form-label"
+    = f.text_field :code, class: "form-control"
+  .mb-3
+    = f.label :name, class: "form-label"
+    = f.text_field :name, class: "form-control"
+  .mb-3
+    = f.submit 'Save', class: "btn btn-primary"

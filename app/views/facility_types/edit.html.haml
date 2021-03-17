@@ -1,0 +1,7 @@
+.mb-3
+  = link_to 'Facility types', facility_types_path
+  
+%h1
+  Editing #{link_to @facility_type.name, @facility_type}
+
+= render 'form'

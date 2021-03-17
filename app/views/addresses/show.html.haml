@@ -1,0 +1,14 @@
+.mb-3
+  = link_to 'Addresses', addresses_path
+  
+= render partial: "notice", object: notice
+
+= render partial: "address", object: @address
+
+%p
+  = link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_address_path(@address), class: "btn btn-outline-secondary btn-sm"
+  &nbsp;
+  = link_to '<i class="bi bi-trash"></i>'.html_safe, @address, method: :delete, data: { confirm: 'Truly?' }, class: "btn btn-outline-secondary btn-sm"
+
+%p
+  (on delete make sure to destroy join table entry too)

@@ -1,7 +1,6 @@
-%h1 Editing industry_sector
+.mb-3
+    = link_to 'Industry sectors', industry_sectors_path
+    
+%h1 Editing #{link_to @industry_sector.name, @industry_sector}
 
 = render 'form'
-
-= link_to 'Show', @industry_sector
-\|
-= link_to 'Back', industry_sectors_path

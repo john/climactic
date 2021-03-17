@@ -1,5 +1,8 @@
-%p#notice= notice
+= render partial: "notice", object: notice
 
+%div
+  = link_to 'Industry sectors', industry_sectors_path
+  
 %p
   %b Code:
   = @industry_sector.code

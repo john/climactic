@@ -1,0 +1,25 @@
+= render partial: "notice", object: notice
+
+%h1 Listing organization_address_types
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Code
+      %th
+      %th
+      %th
+
+  %tbody
+    - @organization_address_types.each do |organization_address_type|
+      %tr
+        %td= organization_address_type.name
+        %td= organization_address_type.code
+        %td= link_to 'Show', organization_address_type
+        %td= link_to 'Edit', edit_organization_address_type_path(organization_address_type)
+        %td= link_to 'Destroy', organization_address_type, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Organization address type', new_organization_address_type_path

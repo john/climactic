@@ -1,0 +1,2 @@
+class OrganizationAddressType < ApplicationRecord
+end

@@ -1,0 +1,15 @@
+%h1
+  Addresses
+  &nbsp;
+  = link_to 'New Address', new_address_path, type: 'button', class: 'btn btn-outline-secondary btn-sm'
+  
+- if @addresses.present?
+  %p
+    - @addresses.each do |address|
+      = render partial: "address", object: address
+      = link_to 'Show', address
+      = link_to 'Edit', edit_address_path(address)
+      = link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' }
+- else
+  %i
+    No addresses

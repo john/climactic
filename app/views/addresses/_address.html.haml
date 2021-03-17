@@ -1,0 +1,31 @@
+%p
+  - if address.address_line_1.present?
+    %br
+    = address.address_line_1
+    
+  - if address.address_line_2.present?
+    foo
+    %br
+    = address.address_line_2
+    
+  - if address.postal_code.present?
+    bar
+    %br
+    = address.postal_code
+    
+  %br/
+  - if address.contact_id
+    = address.contact_id
+  - else
+    %i
+      no contact listed, please add one
+  
+  %br/
+  - if address.organizations.present?
+    Associated with:
+    - address.organizations.each do |org|
+      %br
+      org.name
+  - else
+    %i
+      Not associated with any organizations

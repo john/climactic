@@ -1,18 +1,41 @@
-%p#notice= notice
+= render partial: "notice", object: notice
 
-%p
-  %b Organization type:
-  = @organization.organization_type_id
-%p
-  %b Name:
+.mb-3
+  = link_to 'Organizations', organizations_path
+  
+%h1
   = @organization.name
-%p
-  %b Description:
-  = @organization.description
-%p
-  %b External identifier:
-  = @organization.external_identifier
+  = link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_organization_path(@organization), class: "btn btn-outline-secondary btn-sm"
 
-= link_to 'Edit', edit_organization_path(@organization)
-\|
-= link_to 'Back', organizations_path
+- if @organization.description
+  %p
+    = @organization.description
+
+- if @organization.industry_sectors.present?
+  %p
+    %i
+      Industry sectors
+    %br/
+    - @organization.industry_sectors.each do |sector|
+      = sector.name
+      %hr/
+      
+- if @organization.addresses.present?
+  %p
+    %i
+      Addresses
+    %br/
+    - @organization.addresses.each do |address|
+      = address.address_line_1
+      %br/
+      = address.postal_code
+      %hr/
+      
+
+// %p
+//   Organization type:
+//   = @organization.organization_type_id
+  
+// %p
+//   External identifier:
+//   = @organization.external_identifier

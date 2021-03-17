@@ -1,23 +1,16 @@
-%h1 Listing industry_sectors
+= render partial: "notice", object: notice
 
-%table
-  %thead
-    %tr
-      %th Code
-      %th Name
-      %th
-      %th
-      %th
+%h1
+  Industry Sectors
+  &nbsp;
+  = link_to 'New Industry Sector', new_industry_sector_path, type: 'button', class: 'btn btn-outline-secondary btn-sm'
 
-  %tbody
-    - @industry_sectors.each do |industry_sector|
-      %tr
-        %td= industry_sector.code
-        %td= industry_sector.name
-        %td= link_to 'Show', industry_sector
-        %td= link_to 'Edit', edit_industry_sector_path(industry_sector)
-        %td= link_to 'Destroy', industry_sector, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Industry sector', new_industry_sector_path
+- @industry_sectors.each do |industry_sector|
+  = link_to industry_sector.name, industry_sector
+  
+  &nbsp;&nbsp;
+  = link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_industry_sector_path(industry_sector), class: "btn btn-outline-secondary btn-sm"
+  &nbsp;
+  = link_to '<i class="bi bi-trash"></i>'.html_safe, industry_sector, method: :delete, data: { confirm: 'Truly?' }, class: "btn btn-outline-secondary btn-sm"
+  %hr/
+  

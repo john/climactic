@@ -1,0 +1,13 @@
+= render partial: "notice", object: notice
+
+.mb-3
+  = link_to 'Facility types', facility_types_path
+
+%p
+  %b Code:
+  = @facility_type.code
+%p
+  %b Name:
+  = @facility_type.name
+
+= link_to 'Edit', edit_facility_type_path(@facility_type)
