@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :boundaries
+  resources :ghg_inventories
   resources :facility_types
   resources :organization_address_types
   resources :addresses

@@ -20,6 +20,14 @@
       = sector.name
       %hr/
       
+- if @organization.boundaries.present?
+  %p
+    %i
+      Boundaries
+    %br/
+    - @organization.boundaries.each do |boundary|
+      = boundary.name
+      %br
 - if @organization.addresses.present?
   %p
     %i

@@ -4,12 +4,23 @@
   = link_to 'New Address', new_address_path, type: 'button', class: 'btn btn-outline-secondary btn-sm'
   
 - if @addresses.present?
-  %p
-    - @addresses.each do |address|
-      = render partial: "address", object: address
-      = link_to 'Show', address
-      = link_to 'Edit', edit_address_path(address)
-      = link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' }
+  %table.table.table-hover
+    %thead
+      %tr
+        %th
+        %th
+
+    %tbody
+      - @addresses.each do |address|
+        %tr
+          %td
+            = render partial: "address", object: address
+            -# = link_to 'Show', address
+          %td
+            &nbsp;&nbsp;
+            = link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_address_path(address), class: "btn btn-outline-secondary btn-sm"
+            &nbsp;
+            = link_to '<i class="bi bi-trash"></i>'.html_safe, address, method: :delete, data: { confirm: 'Truly?' }, class: "btn btn-outline-secondary btn-sm"
 - else
   %i
     No addresses

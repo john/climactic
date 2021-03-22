@@ -5,12 +5,18 @@
   &nbsp;
   = link_to 'New Industry Sector', new_industry_sector_path, type: 'button', class: 'btn btn-outline-secondary btn-sm'
 
-- @industry_sectors.each do |industry_sector|
-  = link_to industry_sector.name, industry_sector
-  
-  &nbsp;&nbsp;
-  = link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_industry_sector_path(industry_sector), class: "btn btn-outline-secondary btn-sm"
-  &nbsp;
-  = link_to '<i class="bi bi-trash"></i>'.html_safe, industry_sector, method: :delete, data: { confirm: 'Truly?' }, class: "btn btn-outline-secondary btn-sm"
-  %hr/
-  
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+      %th
+  %tbody
+    - @industry_sectors.each do |industry_sector|
+      %tr
+        %td
+          = link_to industry_sector.name, industry_sector
+        %td
+          &nbsp;&nbsp;
+          = link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_industry_sector_path(industry_sector), class: "btn btn-outline-secondary btn-sm"
+          &nbsp;
+          = link_to '<i class="bi bi-trash"></i>'.html_safe, industry_sector, method: :delete, data: { confirm: 'Truly?' }, class: "btn btn-outline-secondary btn-sm"

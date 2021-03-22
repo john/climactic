@@ -1,0 +1,13 @@
+= form_for @ghg_inventory do |f|
+  - if @ghg_inventory.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@ghg_inventory.errors.count, "error")} prohibited this ghg_inventory from being saved:"
+      %ul
+        - @ghg_inventory.errors.full_messages.each do |message|
+          %li= message
+
+  .mb-3
+    = f.label :name, class: "form-label"
+    = f.text_field :name, class: "form-control"
+  .mb-3
+    = f.submit 'Save', class: "btn btn-primary"

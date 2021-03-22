@@ -1,0 +1,2 @@
+class GhgInventory < ApplicationRecord
+end

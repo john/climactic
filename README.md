@@ -24,10 +24,16 @@ Things you may want to cover:
 * ...
 
 be rails g scaffold IndustrySector code:string name:string
+
+be rails generate model organizational_boundary name:string organization:references
+be rails g scaffold organizational_boundary name:string organization:references
+
+
 be rails g model organization_industry_sector organization_id:integer industry_sector_id:integer
 be rails g scaffold Address contact_id:integer address_line_1:string address_line_2:string postal_code:string
 
 be rails g scaffold FacilityType code:string name:string
+be rails g scaffold ghg_inventory name:string
 
 be rails g scaffold OrganizationAddressType name:string code:string
 be rails g model organization_address organization_id:integer address_id:integer organization_address_type:integer

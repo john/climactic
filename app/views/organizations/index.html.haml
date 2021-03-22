@@ -5,22 +5,21 @@
   &nbsp;
   = link_to 'New Organization', new_organization_path, type: 'button', class: 'btn btn-outline-secondary btn-sm'
 
-%table
+%table.table.table-hover
   %thead
     %tr
-      // %th Organization type
-      %th 
-      // %th Description
-      // %th External identifier
+      %th
       %th
 
   %tbody
     - @organizations.each do |organization|
       %tr
         // %td= organization.organization_type_id
-        %td= link_to organization.name, organization
-        %td= organization.description
-        // %td= organization.external_identifier
+        %td
+          = link_to organization.name, organization
+          %br
+          = organization.description
+          // %td= organization.external_identifier
         %td
           &nbsp;&nbsp;
           = link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_organization_path(organization), class: "btn btn-outline-secondary btn-sm"

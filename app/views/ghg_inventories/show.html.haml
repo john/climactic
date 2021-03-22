@@ -1,0 +1,9 @@
+= render partial: "notice", object: notice
+
+%p
+  %b Name:
+  = @ghg_inventory.name
+
+= link_to 'Edit', edit_ghg_inventory_path(@ghg_inventory)
+\|
+= link_to 'Back', ghg_inventories_path

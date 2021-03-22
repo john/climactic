@@ -7,9 +7,10 @@
           %li= message
 
 
-  .mb-3
-    = f.label :organization, class: "form-label"
-    = f.select(:organizations, options_from_collection_for_select(@organizations, "id", "name"), {include_blank: true}, {class: "form-control"})
+  - if @organizations
+    .mb-3
+      = f.label :organization, class: "form-label"
+      = f.select(:organizations, options_from_collection_for_select(@organizations, "id", "name"), {include_blank: true}, {class: "form-control"})
   .mb-3
     = f.label :contact_id, class: "form-label"
     = f.number_field :contact_id, class: "form-control"

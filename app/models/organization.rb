@@ -1,4 +1,5 @@
 class Organization < ApplicationRecord
+  has_many :boundaries
   has_many :organization_industry_sectors
   has_many :industry_sectors, through: :organization_industry_sectors
   attr_accessor :industry_sector
