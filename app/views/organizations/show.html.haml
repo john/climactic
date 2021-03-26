@@ -10,24 +10,7 @@
 - if @organization.description
   %p
     = @organization.description
-
-- if @organization.industry_sectors.present?
-  %p
-    %i
-      Industry sectors
-    %br/
-    - @organization.industry_sectors.each do |sector|
-      = sector.name
-      %hr/
-      
-- if @organization.boundaries.present?
-  %p
-    %i
-      Boundaries
-    %br/
-    - @organization.boundaries.each do |boundary|
-      = boundary.name
-      %br
+    
 - if @organization.addresses.present?
   %p
     %i
@@ -38,7 +21,24 @@
       %br/
       = address.postal_code
       %hr/
+
+- if @organization.industry_sectors.present?
+  %p
+    %i
+      Industry sectors
+    %br/
+    - @organization.industry_sectors.each do |sector|
+      = link_to sector.name, sector
+      %hr/
       
+- if @organization.boundaries.present?
+  %p
+    %i
+      Boundaries
+    %br/
+    - @organization.boundaries.each do |boundary|
+      = link_to boundary.name, boundary
+      %br
 
 // %p
 //   Organization type:

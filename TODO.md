@@ -4,7 +4,5 @@ Create API endpoints to accept data
 * Pre-carbonated data
 * Start with json, add CSV file upload and processing later
 
-
-be rails g organizations organization_type_id:integer name:string description:text external_identifier:string
-
-rails g scaffold books title:string author:string
+You can create an Organization and pick an address for it at creation time.
+I don't think you can do the reverse.

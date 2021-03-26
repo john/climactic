@@ -35,11 +35,14 @@ be rails g scaffold Address contact_id:integer address_line_1:string address_lin
 be rails g scaffold FacilityType code:string name:string
 be rails g scaffold ghg_inventory name:string
 
-be rails g scaffold OrganizationAddressType name:string code:string
+be rails g scaffold AddressType name:string code:string
+be rails g scaffold ghg_inventory_category name:string code:string
+
 be rails g model organization_address organization_id:integer address_id:integer organization_address_type:integer
 
 be rails g scaffold GeopoliticalEntity location_id:integer effective_datetime:string termination_datetime:string parent_location_id:integer geopolitical_entity_type_id:integer
 
+be rails g organizations organization_type_id:integer name:string description:text external_identifier:string
 
 
 psql -d climactic_development -U postgres -h localhost

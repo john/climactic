@@ -13,12 +13,13 @@
       
   %tbody
     - @facility_types.each do |facility_type|
-      %td
-        = facility_type.code
-        %br
-        = link_to facility_type.name, facility_type
-      %td
-        &nbsp;&nbsp;
-        = link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_facility_type_path(facility_type), class: "btn btn-outline-secondary btn-sm"
-        &nbsp;
-        = link_to '<i class="bi bi-trash"></i>'.html_safe, facility_type, method: :delete, data: { confirm: 'Truly?' }, class: "btn btn-outline-secondary btn-sm"
+      %tr
+        %td
+          = facility_type.code
+          %br
+          = link_to facility_type.name, facility_type
+        %td
+          &nbsp;&nbsp;
+          = link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_facility_type_path(facility_type), class: "btn btn-outline-secondary btn-sm"
+          &nbsp;
+          = link_to '<i class="bi bi-trash"></i>'.html_safe, facility_type, method: :delete, data: { confirm: 'Truly?' }, class: "btn btn-outline-secondary btn-sm"

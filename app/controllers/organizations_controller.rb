@@ -36,7 +36,7 @@ class OrganizationsController < ApplicationController
         end
         
         if @organization.address.present?
-          logger.debug "-----------> found addredd!"
+          logger.debug "-----------> found address!"
           @organization.addresses << Address.find(@organization.address)
           @organization.save
         else

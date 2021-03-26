@@ -6,5 +6,6 @@ class Organization < ApplicationRecord
   
   has_many :organization_addresses
   has_many :addresses, through: :organization_addresses
+  has_many :address_types, through: :organization_addresses
   attr_accessor :address
 end

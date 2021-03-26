@@ -26,7 +26,7 @@ class BoundariesController < ApplicationController
 
     respond_to do |format|
       if @boundary.save
-        format.html { redirect_to @boundary, notice: "Boundary was successfully created." }
+        format.html { redirect_to boundaries_path, notice: "Boundary was successfully created." }
         format.json { render :show, status: :created, location: @boundary }
       else
         format.html { render :new, status: :unprocessable_entity }

@@ -1,0 +1,16 @@
+= form_for @address_type do |f|
+  - if @address_type.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@address_type.errors.count, "error")} prohibited this address_type from being saved:"
+      %ul
+        - @address_type.errors.full_messages.each do |message|
+          %li= message
+
+  .mb-3
+    = f.label :name, class: "form-label"
+    = f.text_field :name, class: "form-control"
+  .mb-3
+    = f.label :code, class: "form-label"
+    = f.text_field :code, class: "form-control"
+  .mb-3
+    = f.submit 'Save', class: "btn btn-primary"

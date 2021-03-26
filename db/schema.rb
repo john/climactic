@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_060822) do
+ActiveRecord::Schema.define(version: 2021_03_26_052020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "address_types", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "addresses", force: :cascade do |t|
     t.integer "contact_id"
@@ -45,6 +52,13 @@ ActiveRecord::Schema.define(version: 2021_03_22_060822) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "ghg_inventory_categories", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "industry_sectors", force: :cascade do |t|
     t.string "code"
     t.string "name"
@@ -52,21 +66,14 @@ ActiveRecord::Schema.define(version: 2021_03_22_060822) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "organization_address_types", force: :cascade do |t|
-    t.string "name"
-    t.string "code"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "organization_addresses", force: :cascade do |t|
     t.bigint "organization_id", null: false
     t.bigint "address_id", null: false
-    t.bigint "organization_address_type_id", null: false
+    t.bigint "address_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["address_id"], name: "index_organization_addresses_on_address_id"
-    t.index ["organization_address_type_id"], name: "index_organization_addresses_on_organization_address_type_id"
+    t.index ["address_type_id"], name: "index_organization_addresses_on_address_type_id"
     t.index ["organization_id"], name: "index_organization_addresses_on_organization_id"
   end
 
@@ -89,8 +96,8 @@ ActiveRecord::Schema.define(version: 2021_03_22_060822) do
   end
 
   add_foreign_key "boundaries", "organizations"
+  add_foreign_key "organization_addresses", "address_types"
   add_foreign_key "organization_addresses", "addresses"
-  add_foreign_key "organization_addresses", "organization_address_types"
   add_foreign_key "organization_addresses", "organizations"
   add_foreign_key "organization_industry_sectors", "industry_sectors"
   add_foreign_key "organization_industry_sectors", "organizations"

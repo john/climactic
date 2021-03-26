@@ -2,14 +2,21 @@
 
 %div
   = link_to 'Industry sectors', industry_sectors_path
-  
-%p
+
+%br
+
+%div
   %b Code:
   = @industry_sector.code
-%p
+%div
   %b Name:
   = @industry_sector.name
 
-= link_to 'Edit', edit_industry_sector_path(@industry_sector)
-\|
-= link_to 'Back', industry_sectors_path
+%br
+%p
+  %i
+    Organizations in this sector:
+  
+- @industry_sector.organizations.each do |org|
+  %b
+    = link_to org.name, organizations_path(org)

@@ -1,4 +1,7 @@
-%p#notice= notice
+.mb-3
+  = link_to 'Boundaries', boundaries_path
+  
+= render partial: "notice", object: notice
 
 %p
   %b Name:
@@ -6,7 +9,3 @@
 %p
   %b Organization:
   = link_to @boundary.organization.name, organization_path(@boundary.organization)
-
-= link_to 'Edit', edit_boundary_path(@boundary)
-\|
-= link_to 'Back', boundaries_path

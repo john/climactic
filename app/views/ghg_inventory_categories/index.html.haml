@@ -1,0 +1,24 @@
+= render partial: "notice", object: notice
+
+%h1
+  GHG Inventory Categories
+  &nbsp;
+  = link_to 'New Inventory Category', new_ghg_inventory_category_path, type: 'button', class: 'btn btn-outline-secondary btn-sm'
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Name
+      %th Code
+      %th
+
+  %tbody
+    - @ghg_inventory_categories.each do |ghg_inventory_category|
+      %tr
+        %td= link_to ghg_inventory_category.name, ghg_inventory_category
+        %td= ghg_inventory_category.code
+        %td
+          &nbsp;&nbsp;
+          = link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_ghg_inventory_category_path(ghg_inventory_category), class: "btn btn-outline-secondary btn-sm"
+          &nbsp;
+          = link_to '<i class="bi bi-trash"></i>'.html_safe, ghg_inventory_category, method: :delete, data: { confirm: 'Truly?' }, class: "btn btn-outline-secondary btn-sm"

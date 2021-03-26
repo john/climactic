@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @ghg_inventory_category.name
+%p
+  %b Code:
+  = @ghg_inventory_category.code
+
+= link_to 'Edit', edit_ghg_inventory_category_path(@ghg_inventory_category)
+\|
+= link_to 'Back', ghg_inventory_categories_path

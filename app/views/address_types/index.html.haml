@@ -1,0 +1,29 @@
+= render partial: "notice", object: notice
+
+%h1
+  Address types
+  &nbsp;
+  = link_to 'New Address Type', new_address_type_path, type: 'button', class: 'btn btn-outline-secondary btn-sm'
+  
+- if @address_types.present?
+  %table.table.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Code
+        %th
+        %th
+        %th
+  
+    %tbody
+      - @address_types.each do |address_type|
+        %tr
+          %td= link_to address_type.name, address_type
+          %td= address_type.code
+          %td
+            &nbsp;&nbsp;
+            = link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_address_type_path(address_type), class: "btn btn-outline-secondary btn-sm"
+            &nbsp;
+            = link_to '<i class="bi bi-trash"></i>'.html_safe, address_type, method: :delete, data: { confirm: 'Truly?' }, class: "btn btn-outline-secondary btn-sm"
+- else
+  No address types

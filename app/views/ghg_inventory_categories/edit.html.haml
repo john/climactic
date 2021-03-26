@@ -1,0 +1,7 @@
+.mb-3
+  = link_to 'GHG Inventory Categories', ghg_inventory_categories_path
+  
+%h1
+  Editing #{link_to @ghg_inventory_category.name, @ghg_inventory_category}
+
+= render 'form'

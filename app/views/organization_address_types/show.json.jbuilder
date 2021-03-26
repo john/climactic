@@ -1,1 +1,0 @@
-json.partial! "organization_address_types/organization_address_type", organization_address_type: @organization_address_type
