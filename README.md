@@ -1,48 +1,27 @@
-# README
+# Climactic
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hack project to make a very basic carbon accounting app, mostly to better understand GHGP and OpenFootprint, the schema of which this is based on.
 
-Things you may want to cover:
+## TODO
 
-* Ruby version
+- cfn to set up a Fargate env & Aurora Serverless
+- Deployment via CodePipeline
+- Try aws-rails-provisioner gem
 
-* System dependencies
+## Commands
 
-* Configuration
+To run the app in a local container:
 
-* Database creation
+`docker-compose build`
+`docker-compose up`
+`docker-compose run web rails db:drop db:create db:migrate db:seed`
 
-* Database initialization
+### Run local Postgres
+`brew services start postgresql`
+`brew services stop postgresql`
 
-* How to run the test suite
+## Deployment
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-be rails g scaffold IndustrySector code:string name:string
-
-be rails generate model organizational_boundary name:string organization:references
-be rails g scaffold organizational_boundary name:string organization:references
-
-
-be rails g model organization_industry_sector organization_id:integer industry_sector_id:integer
-be rails g scaffold Address contact_id:integer address_line_1:string address_line_2:string postal_code:string
-
-be rails g scaffold FacilityType code:string name:string
-be rails g scaffold ghg_inventory name:string
-
-be rails g scaffold AddressType name:string code:string
-be rails g scaffold ghg_inventory_category name:string code:string
-
-be rails g model organization_address organization_id:integer address_id:integer organization_address_type:integer
-
-be rails g scaffold GeopoliticalEntity location_id:integer effective_datetime:string termination_datetime:string parent_location_id:integer geopolitical_entity_type_id:integer
-
-be rails g organizations organization_type_id:integer name:string description:text external_identifier:string
-
+Try this: https://github.com/awslabs/aws-rails-provisioner
 
 psql -d climactic_development -U postgres -h localhost
